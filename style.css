@@ -11,22 +11,18 @@
   --font-heading: "Playfair Display", serif;
   --font-body: "Quicksand", sans-serif;
 
-  --color-bg1: #ffe6e6;
-  --color-bg2: #ffc2c2;
-  --color1: #ffb3b3;
-  --color2: #ff9999;
-  --color3: #ff6666;
-  --color4: #ff4d4d;
+  /* Twilight palette */
+  --bg-dark: #0f1624;        /* night sky */
+  --bg-mid: #1b2436;         /* twilight blue */
+  --bg-soft: #2a344d;        /* misty dusk */
 
-  --text: #333333;
+  --accent-red: #7a1f2b;     /* deep crimson */
+  --accent-silver: #cfd6e6;  /* moonlight */
+  --accent-muted: #8b93a7;   /* fog */
 
-  --glass: rgba(255, 255, 255, 0.22);
-  --glass-border: rgba(255, 255, 255, 0.25);
-  --shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-  --shadow-hover: 0 18px 36px rgba(0, 0, 0, 0.18);
-
-  --radius-lg: 22px;
-  --radius-md: 14px;
+  --text-main: #e6e9f2;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
 }
 
 /* =========================
@@ -34,19 +30,14 @@
 ========================= */
 body {
   background: radial-gradient(
-    circle at center,
-    var(--color-bg1) 20%,
-    var(--color-bg2) 40%,
-    var(--color1) 60%,
-    var(--color2) 75%,
-    var(--color3) 90%,
-    var(--color4) 100%
+    circle at top,
+    var(--bg-soft),
+    var(--bg-mid) 45%,
+    var(--bg-dark) 85%
   );
   background-attachment: fixed;
-  color: var(--text);
+  color: var(--text-main);
   font-family: var(--font-body);
-  overflow-x: hidden;
-  line-height: 1.6;
 }
 
 /* Typography */
