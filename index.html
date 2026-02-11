@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Icons + CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="style.css" />
-
   <link rel="icon" type="image" href="assets/favicon.ico" />
 
   <!-- Fonts -->
@@ -17,13 +14,12 @@
   />
 
   <title>LoveOh</title>
-  <meta name="description" content="A simple, personalized Valentine's page." />
+  <meta name="description" content="A simple, twilight-themed valentine page." />
 </head>
 
 <body>
-
   <!-- Heart background -->
-  <div class="heart-background">
+  <div class="heart-background" aria-hidden="true">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="heart-gradient" cx="50%" cy="50%" r="50%">
@@ -43,9 +39,7 @@
   </div>
 
   <div class="body-wrapper">
-
-    <!-- Nav -->
-    <nav>
+    <nav class="navbar">
       <div class="navbar-wrapper">
         <div class="navlogo">
           <h2>LoveOh</h2>
@@ -56,45 +50,37 @@
       </div>
     </nav>
 
-    <!-- Main content -->
-    <div class="main-wrapper">
-      <div class="main-section-wrapper">
-
-        <!-- Twilight GIF (hidden until Yes) -->
+    <main class="main-wrapper">
+      <section class="main-section-wrapper">
+        <!-- Twilight GIF appears AFTER Yes -->
         <div class="threed-wrapper">
           <div class="threed-box hide twilight-gif">
-            <img
-              src="assets/twilight.gif"
-              alt="Moonlit forest at night"
-            />
+            <img src="assets/twilight.gif" alt="Moonlit forest at night" />
           </div>
         </div>
 
-        <!-- Question -->
         <div class="question-wrapper">
           <div class="question-box">
             <h1>I have a question…</h1>
           </div>
         </div>
 
-        <!-- Buttons -->
         <div class="choice-wrapper">
           <div class="click-box">
-            <button id="reveal-btn">Click to find out</button>
+            <button type="button" id="reveal-btn">Click to find out</button>
           </div>
 
           <div class="choice-box hide">
-            <button id="yes-btn">Yes</button>
-            <button id="no-btn">No</button>
+            <button type="button" id="yes-btn">Yes</button>
+            <button type="button" id="no-btn">No</button>
           </div>
         </div>
 
-      </div>
-    </div>
-
+        <p class="tiny-note">Under the same moon.</p>
+      </section>
+    </main>
   </div>
 
-  <!-- Script -->
   <script src="main.js" defer></script>
 </body>
 </html>
