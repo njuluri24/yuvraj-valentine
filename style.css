@@ -1,484 +1,373 @@
+/* =========================
+   Reset + Theme Variables
+========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --font-heading: 'Playfair Display', serif; /* For headings */
-    --font-body: 'Quicksand', sans-serif; /* For body text */
-    --color-bg1: #FFE6E6;  /* Soft Blush */
-    --color-bg2: #FFC2C2;  /* Light Pink */
-    --color1: #FFB3B3;     /* Soft Pink */
-    --color2: #FF9999;     /* Warm Pink */
-    --color3: #FF6666;     /* Romantic Red */
-    --color4: #FF4D4D;     /* Rich Red */
-    --color5: #333333;     /* Dark Gray for text */
-    --color-interactive: #FF8080; /* Interactive Pink */
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Quicksand", sans-serif;
+
+  --color-bg1: #ffe6e6;
+  --color-bg2: #ffc2c2;
+  --color1: #ffb3b3;
+  --color2: #ff9999;
+  --color3: #ff6666;
+  --color4: #ff4d4d;
+
+  --text: #333333;
+
+  --glass: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 18px 36px rgba(0, 0, 0, 0.18);
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
 }
 
-/* Body and Background */
+/* =========================
+   Page Background
+========================= */
 body {
-    background: radial-gradient(circle at center, 
-        var(--color-bg1) 20%, 
-        var(--color-bg2) 40%, 
-        var(--color1) 60%, 
-        var(--color2) 75%, 
-        var(--color3) 90%, 
-        var(--color4) 100%);
-    background-attachment: fixed;
-    color: var(--color5);
-    font-family: 'Georgia', serif; /* Romantic serif font */
-    overflow-x: hidden;
-    line-height: 1.6;
+  background: radial-gradient(
+    circle at center,
+    var(--color-bg1) 20%,
+    var(--color-bg2) 40%,
+    var(--color1) 60%,
+    var(--color2) 75%,
+    var(--color3) 90%,
+    var(--color4) 100%
+  );
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Headings */
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    font-weight: 700; /* Bold weight for headings */
-    color: var(--color5);
-    margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text);
 }
 
 h1 {
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
 }
 
-h2 {
-    font-size: clamp(1.4rem, 3vw, 2rem);
-}
-
-h3 {
-    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
-}
-
-/* Heart-shaped background */
+/* =========================
+   Heart Background (SVG)
+========================= */
 .heart-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Place it behind all other content */
-    animation: pulse 2s infinite ease-in-out; /* Beating animation */
-    opacity: 0.8; /* Soft transparency */
-    filter: blur(30px); /* Blurry effect */
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.75;
+  filter: blur(30px);
+  animation: pulse 2.2s infinite ease-in-out;
 }
 
 .heart-background svg {
-    width: 100%;
-    height: 100%;
-    fill: url(#heart-gradient); /* Apply gradient to the heart */
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1); /* Slightly larger */
-    }
-    100% {
-        transform: scale(1);
-    }
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
-/* Ensure content is above the heart background */
+/* =========================
+   Main Layout Wrappers
+========================= */
 .body-wrapper {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Navigation Bar */
+/* Navbar */
 .navbar-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Soft border */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 22px;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.navlogo, .navlinks {
-    color: var(--color5);
-    font-size: 1.2rem;
-    font-weight: bold;
+.navlogo h2 {
+  font-size: 1.4rem;
+  letter-spacing: 0.3px;
 }
 
-/* Main Layout */
+.navlinks a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navlinks a:hover {
+  text-decoration: underline;
+}
+
+/* Main wrapper: center the whole page content */
 .main-wrapper {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    gap: 24px;
-    flex-wrap: wrap;
-    flex: 1; /* Allow main content to grow and push footer down */
+  flex: 1; /* pushes footer down */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 16px;
 }
 
-/* Left and Right Aside */
-.aside-wrapper {
-    padding: 5px;
-    flex: 0 0 200px; /* Fixed width to prevent stretching */
-    max-width: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.aside-left-wrapper {
-    padding: 10px;
-}
-
-.aside {
-    width: 100%;
-    text-align: center;
-    color: var(--color5);
-}
-
-/* Video Card */
-.video-card {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    will-change: transform, box-shadow;
-    perspective: 1000px;
-    position: relative;
-}
-
-.video-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-/* Glare Effect */
-.glare {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: inherit;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease-out;
-    pointer-events: none;
-}
-
-.video-card:hover .glare {
-    opacity: 1;
-}
-
-.video-card video {
-    width: 100%;
-    border-radius: 15px;
-    display: block;
-}
-
-/* Main Section */
+/* Center column (your actual content) */
 .main-section-wrapper {
-    font-family: var(--font-body);
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    max-width: 640px;
-    width: 100%;
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+  min-height: calc(100vh - 170px); /* centers between nav + footer */
 }
 
-/* 3D Box */
-.threed-box {
-    width: min(260px, 90vw);
-    height: min(260px, 90vw); /* Set a height */
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Ensures nothing spills */
-    position: relative;
-}
-
-.threed-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Question and Choice Wrapper */
-
-.choice-wrapper > div {
-    margin-top: 20px;
-}
-
+/* =========================
+   “Card” UI pieces
+========================= */
 .question-wrapper,
-.choice-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
+.choice-wrapper,
+.threed-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .question-box,
 .choice-box {
-    text-align: center;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    width: min(480px, 92vw);
+  width: min(560px, 92vw);
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .question-box:hover,
 .choice-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-hover);
 }
 
+/* Buttons */
 .click-box button,
 .choice-box button {
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s ease-out, transform 0.3s ease-out;
-    color: var(--color5);
-    font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  padding: 12px 22px;
+  font-size: clamp(1rem, 2.6vw, 1.25rem);
+  font-family: var(--font-body);
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.choice-box > button {
-    margin: 5px;
+.click-box button {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.click-box button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(1.04);
+}
+
+.choice-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .choice-box button:first-child {
-    background-color: #A7D397; /* Soft pastel green */
-    color: white;
-    border: none;
-    transition:  0.3s ease-in-out;
+  background: #a7d397;
+  color: #ffffff;
+}
+
+.choice-box button:first-child:hover {
+  background: #8bbf77;
+  transform: scale(1.04);
 }
 
 .choice-box button:last-child {
-    background-color: white;
-    color: black;
-    transition: 0.3s ease-in-out;
-}
-
-/* Hover effects */
-.choice-box button:first-child:hover {
-    background-color: #8BBF77; /* Slightly deeper green on hover */
+  background: rgba(255, 255, 255, 0.9);
+  color: #111;
 }
 
 .choice-box button:last-child:hover {
-    background-color: #f74f4f; /* Soft gray hover effect */
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.04);
 }
 
-.click-box button:hover,
-.choice-box button:hover {
-    background: var(--color2);
-    transform: scale(1.05);
-}
-
-
-.choice-box button {
-    transition: all 0.3s ease-in-out;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: clamp(1rem, 3vw, 1.4rem);
+/* Partner name + result text */
+.partner-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--color3);
 }
 
 .love-text {
-    font-size: clamp(1.6rem, 4vw, 2.5rem);
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
-    color: var(--color5); /* Warm Pink */
-    text-align: center;
+  font-size: clamp(1.2rem, 3.4vw, 1.9rem);
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--text);
 }
 
 .no-choice-text {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    font-style: italic;
-    color: var(--color5); /* Dark gray */
-    margin-top: 10px;
-    display: block;
-}
-/* Style for the mute button */
-#mute-button {
-    background-color: var(--color5);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-out, transform 0.3s ease-out;
-    font-size: 1rem;
+  font-size: clamp(1rem, 2.8vw, 1.2rem);
+  font-style: italic;
+  color: var(--text);
+  opacity: 0.95;
+  display: block;
+  margin-top: 10px;
 }
 
-#mute-button:hover {
-    background-color: var(--color5);
-    transform: scale(1.05);
+/* =========================
+   Optional image box (no kissing gif required)
+========================= */
+.threed-box {
+  width: min(260px, 86vw);
+  height: min(260px, 86vw);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#volume-slider {
-    width: 100%;
-    margin-top: 10px;
-    -webkit-appearance: none;
-    background: linear-gradient(to right, #A7D397, #8BBF77);
-    height: 5px;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
+.threed-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* Style for the slider thumb */
-#volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: white;
-    border: 2px solid #8BBF77;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-}
-
-#volume-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-}
-
-/* Footer */
+/* =========================
+   Footer
+========================= */
 footer {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
-    backdrop-filter: blur(10px); /* Frosted glass effect */
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Soft border */
-    margin-top: auto; /* Push footer to the bottom */
-    color: var(--color5);
+  display: flex;
+  justify-content: center;
+  padding: 18px;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
 }
 
-.hide{
-    display: none;
+footer a {
+  color: var(--text);
+  text-decoration: none;
+  opacity: 0.95;
 }
 
-.partner-name {
-    font-family: 'Playfair Display', serif; /* Fancy font */
-    font-size: clamp(1.8rem, 5vw, 3rem); /* Bigger text */
-    font-weight: bold;
-    color: var(--color3); /* Romantic red */
+footer a:hover {
+  text-decoration: underline;
 }
 
-@media (max-width: 900px) {
-    .main-wrapper {
-        flex-direction: column;
-        padding: 16px;
-    }
-
-    .aside-wrapper {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 360px;
-    }
-
-    .navbar-wrapper {
-        padding: 16px;
-    }
+/* Utility */
+.hide {
+  display: none !important;
 }
 
-@media (max-width: 600px) {
-    .navbar-wrapper {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-    }
-
-    .question-wrapper,
-    .choice-wrapper {
-        margin: 12px 0;
-    }
-
-    .choice-box {
-        padding: 16px;
-    }
-
-    .choice-box button {
-        width: 100%;
-        max-width: 260px;
-    }
-}
-
+/* =========================
+   Floating Hearts Animation
+========================= */
 .heart-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 999; /* Ensure it's above everything */
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
 }
 
 .heart {
-    position: absolute;
-    bottom: 0;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    transform: rotate(-45deg);
-    animation: floatUp 4s linear forwards;
-    opacity: 0.8;
+  position: absolute;
+  bottom: -24px;
+  width: 18px;
+  height: 18px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: floatUp 4s linear forwards;
+  opacity: 0.85;
 }
 
-/* Creating heart shape using before and after pseudo-elements */
 .heart::before,
 .heart::after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: red;
+  border-radius: 50%;
 }
 
 .heart::before {
-    top: -10px;
-    left: 0;
+  top: -9px;
+  left: 0;
 }
 
 .heart::after {
-    left: 10px;
-    top: 0;
+  top: 0;
+  left: 9px;
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1) rotate(-45deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) scale(0.5) rotate(-45deg);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(0) scale(1) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(0.55) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 650px) {
+  .navbar-wrapper {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .choice-box button {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .main-section-wrapper {
+    min-height: calc(100vh - 200px);
+  }
 }
